@@ -1,11 +1,12 @@
 class Circuito:
-    def __init__(self, id, origem, destino, cable_dtr, diameter, length):
+    def __init__(self, id, origem, destino, cable_dtr, diameter, length, modification):
         self.id = id
         self.origem = origem
         self.destino = destino
         self.cable_dtr = cable_dtr
         self.diameter = diameter
         self.length = float(length)
+        self.modification = modification.strip().upper()
 
     def __str__(self):
         return (
@@ -14,7 +15,8 @@ class Circuito:
             f"Destino: {self.destino}, "
             f"Cable DTR: {self.cable_dtr}, "
             f"Diâmetro: {self.diameter}, "
-            f"Comprimento: {self.length}"
+            f"Comprimento: {self.length}, "
+            f"Modificação: {self.modification}"
         )
 
     def xmt_properties(self):
@@ -24,9 +26,12 @@ class Circuito:
         return f"{self.cable_dtr} {self.length}m"
 
     def filtro_sobra(self, other):
+        
+        valid_modification = {self.modification, other.modification} == {'A', 'E'}
         return (
-            self.cable_dtr == other.cable_dtr
+            valid_modification
             and self.length == other.length
+            and self.modification != other.modification
         )
 
     def __eq__(self, other):
@@ -40,6 +45,7 @@ class Circuito:
             and self.cable_dtr == other.cable_dtr
             and self.diameter == other.diameter
             and self.length == other.length
+            and self.modification == other.modification
         )
 
     def __hash__(self):
@@ -49,5 +55,6 @@ class Circuito:
             self.destino,
             self.cable_dtr,
             self.diameter,
-            self.length
+            self.length,
+            self.modification
         ))

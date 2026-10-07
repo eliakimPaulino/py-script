@@ -92,6 +92,10 @@ def criar_circuito(row):
     diameter = str(
         row['Type']
     ).strip()
+    
+    modification = str(
+            row['Modif. Novo']
+        ).strip()
 
     length = converter_comprimento(row['Estimated Length'])
 
@@ -101,7 +105,8 @@ def criar_circuito(row):
         destino=destino,
         cable_dtr=cable_dtr,
         diameter=diameter,
-        length=length
+        length=length,
+        modification=modification
     )
 
 
