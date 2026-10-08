@@ -4,14 +4,14 @@ import pandas as pd
 # ARQUIVO PDF
 # ============================================================
 
-PDF_FILENAME = "/home/eliakim/Documents/pr_sl7_447.pdf"
+PDF_FILENAME = "/home/eliakim/Documents/PR_SL7_414.pdf"
 
 
 # ============================================================
 # PÁGINAS DO PDF
 # ============================================================
 
-PAGINAS_DESEJADAS = [6]
+PAGINAS_DESEJADAS = [6, 7, 8]
 
 # ============================================================
 # CONFIGURAÇÕES DO PANDAS

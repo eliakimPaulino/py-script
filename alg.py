@@ -1,24 +1,24 @@
-def mostrar_circuitos(circuitos, quantidade=5):
+def mostrar_circuitos(circuitos):
 
     print("\n=== CIRCUITOS ===")
-
-    for circuito in circuitos[:quantidade]:
-
+    
+    circuitos = [c for c in circuitos if c.modification in ('A', 'M')]
+    
+    for circuito in circuitos:
         print(
-            circuito.xmt_properties()
+            f"{circuito.id} {circuito.origem} {circuito.destino}"
         )
 
-
 def mostrar_representacao_corte(
-    circuitos,
-    quantidade=5
+    circuitos
 ):
     print("\n=== REPRESENTAÇÃO DE CORTE ===")
 
-    for circuito in circuitos[:quantidade]:
-
+    circuitos = [c for c in circuitos if c.modification in ('A')]
+        
+    for circuito in circuitos:
         print(
-            circuito.corte_representation()
+            f"{circuito.cable_dtr} {circuito.length}m"
         )
 
 
@@ -45,7 +45,7 @@ def comparar_circuitos(circuitos):
                 print(f"[CONFLITO/SOBRA DETECTADO]")
                 print(f"  -> Item 1: ID {c1.id} | Mod: {c1.modification} | Cabo: {c1.cable_dtr} | Comp: {c1.length}m")
                 print(f"  -> Item 2: ID {c2.id} | Mod: {c2.modification} | Cabo: {c2.cable_dtr} | Comp: {c2.length}m")
-                print("-" * 50)
+                print("-" * 80)
     if not pares_encontrados:
         print("Nenhum par correspondente entre 'A' e 'E' com mesmo cabo e comprimento foi encontrado.")
         
