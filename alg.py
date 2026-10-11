@@ -23,8 +23,8 @@ def executar(circuitos):
 
     mostrar_circuitos(circuitos)
 
-    mostrar_representacao_corte(circuitos)
-
     comparar_circuitos(circuitos)
+
+    mostrar_representacao_corte(circuitos)
 
     return circuitos
