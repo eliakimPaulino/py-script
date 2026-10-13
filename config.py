@@ -4,7 +4,7 @@ import pandas as pd
 # ARQUIVO PDF
 # ============================================================
 
-PDF_FILENAME = "/home/eliakim/Documents/PR_SL7_414.pdf"
+PDF_FILENAME = "/home/eliakim/Documents/data_source/PR_SL7_414.pdf"
 
 
 # ============================================================

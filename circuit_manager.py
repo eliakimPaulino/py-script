@@ -4,7 +4,6 @@ class CircuitManager:
         self.list_to_filter = []
     
     def _filtrar_por_modificacao(self, *modifications):
-        """Método auxiliar privado para evitar repetir list comprehensions."""
         return [c for c in self.circuitos if c.modification in modifications]
     
     
@@ -29,7 +28,7 @@ class CircuitManager:
         print("\n=== LISTA DE CIRCUITOS ===")
         circuitos_filtrados = self._filtrar_por_modificacao('A', 'M')
         for circuito in circuitos_filtrados:
-            print(f"{circuito.id} {circuito.origem} {circuito.destino}")
+            print(circuito.xmt_properties())
     
     def comparar_circuitos(self):
         # Obter circuitos com modificações A ou E e os pares correspondentes
@@ -45,8 +44,8 @@ class CircuitManager:
         if pares_encontrados:
             print("\nCONFLITO/SOBRA DETECTADO\n")
             for c1, c2 in pares_encontrados:
-                print(f"Cabo Adicionado: {c2.id} | Cabo: {c2.cable_dtr} | {c2.length}m")
-                print(f"Cabo Eliminado:  {c1.id} | Cabo: {c1.cable_dtr} | {c1.length}m")
+                print(f"Cabo Eliminado:  {c1.id} {c1.origem} {c1.destino} {c2.cable_dtr} {c2.length}m")
+                print(f"Cabo Adicionado: {c2.id} {c2.origem} {c2.destino} {c1.cable_dtr} {c1.length}m")
                 print("-" * 65)
         else:
             print(
@@ -74,5 +73,5 @@ class CircuitManager:
             chave = (circuito.cable_dtr, circuito.length)
 
             if chave not in pares_excluir:
-                print(f"{circuito.cable_dtr} {circuito.length}m")
+                print(circuito.corte_representation())
         
